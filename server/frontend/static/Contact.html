@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Car Dealership</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="static/style.css">
+
+    <style>
+        .bubble {
+            background-color: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            margin-top: -30px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .bubble::before {
+            content: "";
+            position: absolute;
+            bottom: 100%;
+            left: 20px;
+            border-width: 15px;
+            border-style: solid;
+            border-color: transparent transparent #f8f9fa transparent;
+        }
+
+        .location-img {
+            width: 100%;
+            max-height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color:darkturquoise;">
+        <div class="container-fluid">
+            <h2>Dealerships</h2>
+            <div class="collapse navbar-collapse" id="navbarText">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/contact">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container mt-5">
+        
+        <!-- Location Image -->
+        <h3 class="text-center">Our Location</h3>
+        <img src="https://img.gta5-mods.com/q95/images/car-dealership-showroom-fivem-y-map-ymap/c8d980-pic13%20dealer.png" alt="Dealership Location" class="location-img">
+
+        <!-- Contact Information Bubble -->
+        <div class="bubble">
+            <h3>Contact Us</h3>
+            <p>If you have any questions or need assistance, feel free to reach out to us!</p>
+
+            <!-- Contact Form -->
+            <form action="/submit_contact" method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="name" class="form-label">Your Name</label>
+                    <input type="text" class="form-control" id="name" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Your Email</label>
+                    <input type="email" class="form-control" id="email" name="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="message" class="form-label">Your Message</label>
+                    <textarea class="form-control" id="message" name="message" rows="4" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </div>
+        
+    </div>
+</body>
+</html>
